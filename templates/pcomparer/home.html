@@ -1,0 +1,45 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Plog</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css" />
+<link rel="stylesheet" href="{% static 'plinterview/style.css' %}" />
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.10.1.js"></script>
+<script type="text/javascript" src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+<script type="text/javascript" src="{% static 'plinterview/script.js' %}"></script>
+</head>
+
+<body>
+  <div class="header row">
+    <div class="twelve columns">
+      <a href="/compare" class="two columns"><div class="header-tile">Pcompare</div></a>
+      <a href="/compare" class="two columns"><div class="header-tile">Lorem</div></a>
+      <a href="/compare" class="two columns"><div class="header-tile">Ipsum</div></a>
+      <a href="" class="two columns right" id="logout">
+        <div class="header-tile">Dolor</div>
+      </a>
+    </div>
+  </div>
+  <div class="content container">
+    <div class="row">
+      <div>
+        <form id="compare-form" action="{% url 'compare_products' %}" method="POST">{% csrf_token %}
+          <div class="compare-inner twelve column">
+            <div class="row ui-widget">
+              <input type="text" id="product" name="product" placeholder="Product to compare" class="eight columns" style="margin-left:0;" required>
+            </div>
+            <br>
+            <br>
+            <div class="row">
+              <input type="submit" name="submit" value="Compare" class="button submit six columns">
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

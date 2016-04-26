@@ -1,0 +1,52 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Plog</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css" />
+<link rel="stylesheet" href="{% static 'plinterview/style.css' %}" />
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.10.1.js"></script>
+<script type="text/javascript" src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+<script type="text/javascript" src="{% static 'plinterview/script.js' %}"></script>
+</head>
+
+<body>
+  <div class="header row">
+    <div class="twelve columns">
+      <a href="/compare" class="two columns"><div class="header-tile">Pcompare</div></a>
+      <a href="/compare" class="two columns"><div class="header-tile">Lorem</div></a>
+      <a href="/compare" class="two columns"><div class="header-tile">Ipsum</div></a>
+      <a href="" class="two columns right" id="logout">
+        <div class="header-tile">Dolor</div>
+      </a>
+    </div>
+  </div>
+  <div class="content container">
+    <div class="row">
+      <div class="twelve columns">
+        {% for product in products %}
+          {% if forloop.counter == 1 %}
+          <h2>{{ product.category }}</h2>
+          <hr>
+          <p>
+            <strong>{{ product.name }}</strong>
+          </p>
+          {% endif %}
+
+          <div class="tile five columns">
+            <p>{{ product.vendor }}</p>
+            <p>{{ product.stars }}</p>
+            {% if forloop.counter == 1 %}
+              <div>Rs. <span style="color: red;"><strong>{{ product.price|floatformat:2 }}</strong></span></div>
+            {% else %}
+              <div>Rs. <span>{{ product.price|floatformat:2 }}</span></div>
+            {% endif %}
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</body>
+</html>
